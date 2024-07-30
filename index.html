@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>heal your soul</title>
+        <style>
+            body{
+                display:flex;
+                align-items:center;
+                justify-content:center
+                overflow: hidden;
+                background:linear-gradient(320deg, cyan 0%, orange 40%, #FF7C00 70%, #A04B00 100% );
+            }
+            #air{
+                width:100%;
+                height:40%;
+                position:absolute;
+                margin: 0;
+                bottom:0;
+                left:0;
+                background-position: center;
+                background:linear-gradient(45deg, darkblue 0%, darkcyan 50%, cyan 100%);
+                background-size: cover;
+            }
+            #air2{
+                display:none;
+                width:100%;
+                height:40%;
+                position:absolute;
+                margin: 0;
+                bottom:0;
+                opacity:0;
+                left:0;
+                background-position: center;
+                background:linear-gradient(25deg, #00205D 30%, #002371 50%, #005CA5 80%, lightblue 100% );
+                background-size: cover;
+            }
+            
+            @keyframes air-in{
+                0%{
+                    opacity:0;
+                }
+                100%{
+                    opacity:1;
+                }
+            }
+            @keyframes air-out{
+                0%{
+                    opacity:1;
+                }
+                100%{
+                    opacity:0;
+                }
+            }
+            #bg{
+                display:none;
+                width:100%;
+                height:100%;
+                position:absolute;
+                margin: 0;
+                bottom:0;
+                opacity:0;
+                left:0;
+                background-position: center;
+                background-color:black;
+                background-size: cover;
+            }
+            @keyframes bg-in{
+                0%{
+                    opacity:0;
+                }
+                100%{
+                    opacity:1;
+                }
+            }
+            @keyframes bg-out{
+                0%{
+                    opacity:1;
+                }
+                100%{
+                    opacity:0;
+                }
+            }
+            #matahari{
+                width:70px;
+                height:70px;
+                position:absolute;
+                border-radius:50%;
+                background-color:orange;
+                box-shadow:0 0 3em yellow;
+                top:300px;
+                right:10px;
+            }
+            
+            @keyframes mat-in{
+                0%{
+                    top:300px;
+                }
+                100%{
+                    top:450px;
+                }
+            }
+
+            @keyframes mat-out{
+                0%{
+                    top:450px;
+                }
+                100%{
+                    top:300px;
+                }
+            }
+            
+            #bulan{
+                width:50px;
+                height:50px;
+                position:absolute;
+                border-radius:50%;
+                box-shadow:0 0 5em silver;
+                background-color:silver;
+                top:350px;
+                right:20px;
+            }
+            
+            @keyframes bul-in{
+                0%{
+                    top:350px;
+                }
+                100%{
+                    top:150px;
+                }
+            }
+            
+            @keyframes bul-out{
+                0%{
+                    top:150px;
+                }
+                100%{
+                    top:350px;
+                }
+            }
+            #burung{
+                width:10px;
+                height:1px;
+                transform-origin: left center;
+                position:absolute;
+                background-color: black;
+                left:240px;
+                animation: sypkn 1s linear infinite;
+            }
+            
+            @keyframes sypkn{
+                0%{
+                    transform:rotate(0deg);
+                    left:20px;
+                }
+                50%{
+                    transform:rotate(-30deg);
+                }
+                100%{
+                    transform:rotate(0deg);
+                }
+            }
+            #burung::before{
+                content:"";
+                width:10px;
+                height:1px;
+                transform-origin: right center;
+                position:absolute;
+                background-color: black;
+                right:10px;
+                animation: sypkr 1s linear infinite;
+            }
+            
+            @keyframes sypkr{
+                0%{
+                    transform:rotate(0deg);
+                }
+                50%{
+                    transform:rotate(60deg);
+                }
+                100%{
+                    transform:rotate(0deg);
+                }
+            }
+            #burung1{
+                width:10px;
+                height:1px;
+                transform-origin: left center;
+                position:absolute;
+                background-color: black;
+                left:200px;
+                animation: sypkn 1s linear infinite;
+            }
+            
+            @keyframes sypkn{
+                0%{
+                    transform:rotate(0deg);
+                }
+                50%{
+                    transform:rotate(-30deg);
+                }
+                100%{
+                    transform:rotate(0deg);
+                }
+            }
+            #burung1::before{
+                content:"";
+                width:10px;
+                height:1px;
+                transform-origin: right center;
+                position:absolute;
+                background-color: black;
+                right:10px;
+                animation: sypkr 1s linear infinite;
+            }
+            
+            @keyframes sypkr{
+                0%{
+                    transform:rotate(0deg);
+                }
+                50%{
+                    transform:rotate(60deg);
+                }
+                100%{
+                    transform:rotate(0deg);
+                }
+            }
+            #burung2{
+                width:10px;
+                height:1px;
+                transform-origin: left center;
+                position:absolute;
+                background-color: black;
+                left:260px;
+                top:250px;
+                animation: sypkn 1s linear infinite;
+            }
+            
+            @keyframes sypkn{
+                0%{
+                    transform:rotate(0deg);
+                }
+                50%{
+                    transform:rotate(-30deg);
+                }
+                100%{
+                    transform:rotate(0deg);
+                }
+            }
+            #burung2::before{
+                content:"";
+                width:10px;
+                height:1px;
+                transform-origin: right center;
+                position:absolute;
+                background-color: black;
+                right:10px;
+                animation: sypkr 1s linear infinite;
+            }
+            
+            @keyframes sypkr{
+                0%{
+                    transform:rotate(0deg);
+                }
+                50%{
+                    transform:rotate(60deg);
+                }
+                100%{
+                    transform:rotate(0deg);
+                }
+            }
+            #burung3{
+                width:10px;
+                height:1px;
+                transform-origin: left center;
+                position:absolute;
+                background-color: black;
+                top:260px;
+                left:220px;
+                animation: sypkn 1s linear infinite;
+            }
+            
+            @keyframes sypkn{
+                0%{
+                    transform:rotate(0deg);
+                }
+                50%{
+                    transform:rotate(-30deg);
+                }
+                100%{
+                    transform:rotate(0deg);
+                }
+            }
+            #burung3::before{
+                content:"";
+                width:10px;
+                height:1px;
+                transform-origin: right center;
+                position:absolute;
+                background-color: black;
+                right:10px;
+                animation: sypkr 1s linear infinite;
+            }
+            
+            @keyframes sypkr{
+                0%{
+                    transform:rotate(0deg);
+                }
+                50%{
+                    transform:rotate(60deg);
+                }
+                100%{
+                    transform:rotate(0deg);
+                }
+            }
+            #burung4{
+                width:10px;
+                height:1px;
+                transform-origin: left center;
+                position:absolute;
+                background-color: black;
+                top:250px;
+                left:180px;
+                animation: sypkn 1s linear infinite;
+            }
+            
+            @keyframes sypkn{
+                0%{
+                    transform:rotate(0deg);
+                }
+                50%{
+                    transform:rotate(-30deg);
+                }
+                100%{
+                    transform:rotate(0deg);
+                }
+            }
+            #burung4::before{
+                content:"";
+                width:10px;
+                height:1px;
+                transform-origin: right center;
+                position:absolute;
+                background-color: black;
+                right:10px;
+                animation: sypkr 1s linear infinite;
+            }
+            
+            @keyframes sypkr{
+                0%{
+                    transform:rotate(0deg);
+                }
+                50%{
+                    transform:rotate(60deg);
+                }
+                100%{
+                    transform:rotate(0deg);
+                }
+            }
+        #fish {
+            position: absolute;
+            width: 50px;
+            height: 25px;
+            left:80px;
+            opacity:0;
+            top:450px;
+            background-color: #476DA6;
+            border-radius: 50px 50px 50px 50px / 25px 25px 25px 25px;
+        }
+        
+        @keyframes ikan_in{
+            0%{
+                opacity:0;
+                left:10px;
+            }
+            100%{
+                opacity:0.5;
+                left:150px;
+            }
+        }
+        @keyframes ikan_out{
+            0%{
+                opacity:0.5;
+                left:150px;
+            }
+            100%{
+                opacity:0;
+                left:240px;
+            }
+        }
+        #fish::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -8px;
+            width: 10px;
+            height: 30px;
+            background-color: #476DA6;
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+        #fish-eye {
+            position: absolute;
+            top: 50%;
+            left: 75%;
+            width: 6px;
+            height: 6px;
+            background-color: #000;
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+        #fish2 {
+            position: absolute;
+            width: 20px;
+            height: 15px;
+            left:100px;
+            top:20px;
+            background-color: #476DA6;
+            border-radius: 50px 50px 50px 50px / 25px 25px 25px 25px;
+        }
+        #fish2::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -8px;
+            width: 10px;
+            height: 20px;
+            background-color: #476DA6;
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+        #fish-eye2 {
+            position: absolute;
+            top: 50%;
+            left: 75%;
+            width: 3px;
+            height: 3px;
+            background-color: #000;
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+        #fish3 {
+            position: absolute;
+            width: 30px;
+            height: 15px;
+            left:75px;
+            top:-30pc;
+            background-color: #476DA6;
+            border-radius: 50px 50px 50px 50px / 25px 25px 25px 25px;
+        }
+        #fish3::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -8px;
+            width: 10px;
+            height: 20px;
+            background-color: #476DA6;
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+        #fish-eye3 {
+            position: absolute;
+            top: 50%;
+            left: 75%;
+            width: 3px;
+            height: 3px;
+            background-color: #000;
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+        #fish4 {
+            position: absolute;
+            width: 30px;
+            height: 15px;
+            left:45px;
+            top:5pc;
+            background-color: #476DA6;
+            border-radius: 50px 50px 50px 50px / 25px 25px 25px 25px;
+        }
+        #fish4::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -8px;
+            width: 10px;
+            height: 20px;
+            background-color: #476DA6;
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+        #fish-eye4 {
+            position: absolute;
+            top: 50%;
+            left: 75%;
+            width: 3px;
+            height: 3px;
+            background-color: #000;
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+        #awan, #awan1, #awan2, #awan3, #awan4, #awan5{
+            position:absolute;
+            background-color: silver;
+            border-radius:50%;
+            
+            
+        }
+        #awan{
+            top:-10px;
+            left:-40px;
+            width:250px;
+            height:100px;
+        }
+        #awan1{
+            top:-10px;
+            left:-25px;
+            width:150px;
+            height:130px;
+        }
+        #awan2{
+            top:80px;
+            left:100px;
+            width:150px;
+            height:30px;
+        }
+        #awan3{
+            top:-30px;
+            left:200px;
+            width:100px;
+            height:100px;
+        }
+        #awan4{
+            top:10px;
+            left:250px;
+            width:150px;
+            height:50px;
+        }
+        #awan5{
+            top:-10px;
+            left:250px;
+            width:150px;
+            height:60px;
+        }
+        #awansil, #awan-sil1, #awan-sil2, #awan-sil3, #awan-sil4, #awan-sil5{
+            position:absolute;
+            top:10px;
+            left:0px;
+            background-color: grey;
+            border-radius:50%;
+            
+            
+        }
+        #awansil{
+            top:0px;
+            left:0px;
+            width:250px;
+            height:100px;
+        }
+        #awan-sil1{
+            top:10px;
+            left:-25px;
+            width:150px;
+            height:130px;
+        }
+        #awan-sil2{
+            top:80px;
+            left:100px;
+            width:150px;
+            height:30px;
+        }
+        #awan-sil3{
+            top:-30px;
+            left:200px;
+            width:100px;
+            height:100px;
+        }
+        #awan-sil4{
+            top:10px;
+            left:210px;
+            width:150px;
+            height:50px;
+        }
+        #awan-sil5{
+            top:-10px;
+            left:200px;
+            width:150px;
+            height:60px;
+        }
+        
+        @keyframes awin{
+            0%{
+                opacity:1;
+            }
+            100%{
+                opacity:0.5;
+            }
+        }
+        
+        @keyframes awout{
+            0%{
+                opacity:0.5;
+            }
+            100%{
+                opacity:1;
+            }
+        }
+        @keyframes awsilin{
+            0%{
+                opacity:1;
+            }
+            100%{
+                opacity:0.5;
+            }
+        }
+        
+        @keyframes awsilout{
+            0%{
+                opacity:0.5;
+            }
+            100%{
+                opacity:1;
+            }
+        }
+        #perahu{
+            width:70px;
+            height:30px;
+            position:absolute;
+            background-color:orange;
+            top:320px;
+            left:50px;
+            
+        }
+        #perahu:hover{
+            content:"";
+            width:70px;
+            height:30px;
+            position:absolute;
+            background-color:orange;
+            top:320px;
+            left:50px;
+            animation: perhov 2s linear;
+            
+        }
+        @keyframes perhov{
+            0%{
+                left:50px;
+            }
+            20%{
+                left:70px;
+            }
+            40%{
+                left:50px;
+            }
+            50%{
+                left:70px;
+            }
+            70%{
+                left:50px;
+            }
+            80%{
+                left:70px;
+            }
+            100%{
+                left:50px;
+            }
+        }
+        #perahu::before{
+            content:"";
+            width:30px;
+            height:30px;
+            position:absolute;
+            background-color:orange;
+            top:0px;
+            left:70px;
+            border-bottom-right-radius:50px;
+            
+        }
+        #perahu::after{
+            content:"";
+            width:30px;
+            height:30px;
+            position:absolute;
+            background-color:orange;
+            top:0px;
+            left:-30px;
+            border-bottom-left-radius:50px;
+            
+        }
+        
+        #layar{
+            width:50px;
+            height:80px;
+            position:absolute;
+            background-color:red;
+            border-top-right-radius:100%;
+            top:-100px;
+            left:20px;
+        }
+        
+        #layar::before{
+            content:"";
+            width:5px;
+            height:100px;
+            position:absolute;
+            background-color:grey;
+            top:0px;
+            left:0px;
+        }
+        
+        @keyframes per-in{
+            0%{
+                left:50px;
+            }
+            100%{
+                left:250px;
+            }
+        }
+        @keyframes per-out{
+            0%{
+                left:250px;
+            }
+            100%{
+                left:50px;
+            }
+        }
+        </style>
+    </head>
+    <body>
+        <div id="bg"></div>
+        <div id="matahari"></div>
+        <div id="bulan"></div>
+        <div id="air"></div>
+        <div id="air2"></div>
+        <div id="kelompok">
+        <div id="burung"></div>
+        <div id="burung1"></div>
+        <div id="burung2"></div>
+        <div id="burung3"></div>
+        <div id="burung4"></div>
+        </div>
+        <div id="fish">
+            <div id="fish-eye"></div>
+            <div id="fish2">
+                <div id="fish-eye2"></div>
+            </div>
+            <div id="fish3">
+                <div id="fish-eye3"></div>
+            </div>
+            <div id="fish4">
+                <div id="fish-eye4"></div>
+            </div>
+        </div>
+        <div id="awansil">
+            <div id="awan-sil1"></div>
+            <div id="awan-sil2"></div>
+            <div id="awan-sil3"></div>
+            <div id="awan-sil4"></div>
+            <div id="awan-sil5"></div>
+            
+        </div>
+        <div id="awan">
+            <div id="awan1"></div>
+            <div id="awan2"></div>
+            <div id="awan3"></div>
+            <div id="awan4"></div>
+            <div id="awan5"></div>
+            
+        </div>
+        
+        <div id="perahu">
+            <div id="layar"></div>
+        </div>
+
+        
+        <script>
+            var clickCount =0;
+            var clickCount2 =0;
+            var clickCount3 =0;
+            
+             var matahari = document.getElementById("matahari");
+             var bulan = document.getElementById("bulan");
+             var air = document.getElementById("air");
+             var air2 = document.getElementById("air2");
+             var bg = document.getElementById("bg");
+             var kelompok = document.getElementById("kelompok");
+             var awan = document.getElementById("awan");
+             var awansil = document.getElementById("awansil");
+             
+             matahari.addEventListener("click",function() {
+                 
+                 clickCount++;
+                 
+                 if(clickCount ===1) {
+                     bg.style.display ="block";
+                     bg.style.animation ="bg-in 5s forwards";
+                     air2.style.display ="block";
+                     air2.style.animation ="air-in 5s forwards";
+                     bulan.style.animation ="bul-in 5s forwards";
+                     matahari.style.animation ="mat-in 5s forwards";
+                     fish.style.animation ="ikan_in 5s forwards";
+                     awan.style.animation ="awin 5s forwards";
+                     awansil.style.animation ="awsilin 5s forwards";
+                     perahu.style.animation ="per-in 5s forwards";
+                 }
+             });
+             
+             bulan.addEventListener("click",function() {
+                 
+                 clickCount2++;
+                 
+                 if(clickCount2 ===1) {
+                     
+                     clickCount =0;
+                     clickCount2 =0;
+                     bg.style.display ="block";
+                     bg.style.animation ="bg-out 5s forwards";
+                     air2.style.display ="block";
+                     air2.style.animation ="air-out 5s forwards";
+                     bulan.style.animation ="bul-out 5s forwards";
+                     matahari.style.animation ="mat-out 5s forwards";
+                     fish.style.animation ="ikan_out 5s forwards";
+                     awan.style.animation ="awout 5s forwards";
+                     awansil.style.animation ="awsilout 5s forwards";
+                     perahu.style.animation ="per-out 5s forwards";
+                 }
+             });
+        </script>
+    </body>
+</html>
